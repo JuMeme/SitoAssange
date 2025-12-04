@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Caso Assange: Giornalismo Sotto Processo</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Un'analisi approfondita del caso Julian Assange: dalle rivelazioni di WikiLeaks del 2010 alla liberazione del 2024. Esplora il dibattito tra libertà di stampa e sicurezza nazionale.">
+    <meta name="keywords" content="Julian Assange, WikiLeaks, libertà di stampa, giornalismo, Espionage Act, Chelsea Manning">
+    <meta name="author" content="Sito EDCIVTLC">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Il Caso Assange: Giornalismo Sotto Processo">
+    <meta property="og:description" content="Un'analisi approfondita del caso Julian Assange: dalle rivelazioni di WikiLeaks del 2010 alla liberazione del 2024.">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Il Caso Assange: Giornalismo Sotto Processo">
+    <meta name="twitter:description" content="Un'analisi approfondita del caso Julian Assange: dalle rivelazioni di WikiLeaks del 2010 alla liberazione del 2024.">
+    
+    <!-- Performance: Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- React and Framer Motion -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10/dist/framer-motion.js"></script>
+    
+    <!-- Critical CSS inline -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --heading-color: #111111;
+            --hero-bg: #f8f9fa;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+        [data-theme="dark"] {
+            --primary-color: #4dabf7;
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --heading-color: #ffffff;
+            --hero-bg: #222222;
+            --nav-bg: rgba(34, 34, 34, 0.95);
+        }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        header {
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eeeeee;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            height: 70px;
+        }
+        #hero {
+            height: calc(100vh - 70px);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--hero-bg);
+            padding: 0 20px;
+        }
+        .read-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-color), #004085);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+    </style>
+    
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Navigazione principale">
+            <a href="#hero" class="nav-logo" aria-label="Torna all'inizio">Il Caso Assange</a>
+            <ul class="desktop-nav" role="menubar" id="desktop-nav">
+                <li role="none"><a href="#chi-e" role="menuitem">Chi è</a></li>
+                <li role="none"><a href="#revelations" role="menuitem">Rivelazioni</a></li>
+                <li role="none"><a href="#timeline" role="menuitem">Timeline</a></li>
+                <li role="none"><a href="#il-dibattito" role="menuitem">Dibattito</a></li>
+                <li role="none"><a href="#libero" role="menuitem">La Liberazione</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle-btn desktop-theme-btn" aria-label="Cambia tema chiaro/scuro" type="button">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+            <button id="menu-toggle" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="mobile-nav" type="button">
+                <span class="sr-only">Menu</span>
+                <div class="bar" aria-hidden="true"></div>
+                <div class="bar" aria-hidden="true"></div>
+                <div class="bar" aria-hidden="true"></div>
+            </button>
+        </nav>
+    </header>
+
+    <nav id="mobile-nav" role="navigation" aria-label="Menu mobile" aria-hidden="true">
+        <ul role="menubar" id="mobile-nav-links">
+            <li role="none"><a href="#chi-e" role="menuitem">Chi è</a></li>
+            <li role="none"><a href="#revelations" role="menuitem">Rivelazioni</a></li>
+            <li role="none"><a href="#timeline" role="menuitem">Timeline</a></li>
+            <li role="none"><a href="#il-dibattito" role="menuitem">Il Dibattito</a></li>
+            <li role="none"><a href="#libero" role="menuitem">La Liberazione</a></li>
+        </ul>
+        <div class="mobile-settings">
+            <p>Impostazioni Tema</p>
+            <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Cambia tema chiaro/scuro" type="button">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content" id="hero-react-root"></div>
+        </section>
+
+        <section id="chi-e" class="content-section">
+            <div class="container">
+                <h2 id="chi-e-title">Chi è Julian Assange?</h2>
+                <div class="grid-layout">
+                    <div id="chi-e-text">
+                        <p>Julian Assange è un giornalista, editore e attivista australiano, noto principalmente come il **fondatore di WikiLeaks** (2006). La sua organizzazione ha guadagnato fama mondiale nel 2010 per aver pubblicato centinaia di migliaia di documenti militari e diplomatici statunitensi classificati.</p>
+                        <p>Queste rivelazioni, fornite dall'ex analista dell'intelligence Chelsea Manning, hanno esposto informazioni su crimini di guerra, abusi dei diritti umani e corruzione diplomatica su scala globale. Per molti, è un eroe della trasparenza; per i suoi accusatori, una spia che ha messo in pericolo la sicurezza nazionale.</p>
+                    </div>
+                    <div id="chi-e-image">
+                        <div class="image-placeholder">
+                           <img src="i/julian.jpg" alt="Julian Assange" width="100%" height="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="revelations" class="content-section secondary-bg">
+            <div class="container">
+                <h2 id="revelations-title">Le Rivelazioni Chiave del 2010</h2>
+                <p class="section-intro" id="revelations-intro">Il 2010 è stato l'anno che ha definito WikiLeaks. Grazie ai file forniti da Chelsea Manning, Assange ha pubblicato tre set di documenti che hanno scioccato il mondo.</p>
+                <div class="grid-layout-triple">
+                    <div class="card" data-card-index="0">
+                        <h3><i class="fas fa-video"></i> Collateral Murder</h3>
+                        <p>Un video classificato che mostrava un elicottero Apache statunitense a Baghdad nel 2007 uccidere civili disarmati, inclusi due giornalisti dell'agenzia Reuters.</p>
+                    </div>
+                    <div class="card" data-card-index="1">
+                        <h3><i class="fas fa-file-alt"></i> Afghan & Iraq War Logs</h3>
+                        <p>Oltre 400.000 rapporti militari segreti che documentavano la guerra, rivelando un numero di vittime civili molto più alto di quello ufficialmente ammesso.</p>
+                    </div>
+                    <div class="card" data-card-index="2">
+                        <h3><i class="fas fa-landmark"></i> Cablegate</h3>
+                        <p>Più di 250.000 cablogrammi diplomatici statunitensi che svelavano le comunicazioni private e spesso brutali tra il Dipartimento di Stato e le sue ambasciate.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="timeline" class="content-section">
+            <div class="container">
+                <h2 id="timeline-title">Una Storia Lunga 14 Anni</h2>
+                <div class="timeline-container">
+                    <div class="timeline-item" data-timeline-index="0">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2010</div>
+                        <div class="timeline-content">
+                            <h3>Le Grandi Rivelazioni</h3>
+                            <p>WikiLeaks pubblica i "War Logs" e "Cablegate". La Svezia emette un mandato d'arresto per accuse di reati sessuali (poi archiviate nel 2019).</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-timeline-index="1">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2012</div>
+                        <div class="timeline-content">
+                            <h3>Rifugio nell'Ambasciata</h3>
+                            <p>Assange ottiene asilo politico nell'ambasciata dell'Ecuador a Londra per evitare l'estradizione, temendo una successiva estradizione negli USA.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-timeline-index="2">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2016</div>
+                        <div class="timeline-content">
+                            <h3>Leak DNC</h3>
+                            <p>WikiLeaks pubblica le email del Comitato Nazionale Democratico (DNC) USA, influenzando le elezioni presidenziali americane e alienando molti sostenitori.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-timeline-index="3">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2019</div>
+                        <div class="timeline-content">
+                            <h3>L'Arresto</h3>
+                            <p>L'Ecuador revoca l'asilo. Assange viene arrestato e imprigionato a Belmarsh. Gli USA rivelano 18 capi d'accusa ai sensi dell'Espionage Act.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-timeline-index="4">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2021-2022</div>
+                        <div class="timeline-content">
+                            <h3>La Battaglia Legale</h3>
+                            <p>Un giudice UK nega l'estradizione (2021) per rischio suicidio. L'Alta Corte ribalta la decisione (2022), approvando l'estradizione dopo le rassicurazioni USA.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-timeline-index="5">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h3>L'Accordo e la Libertà</h3>
+                            <p>Assange raggiunge un patteggiamento, dichiarandosi colpevole di un singolo capo d'accusa. Viene rilasciato dopo 5 anni e torna in Australia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="il-dibattito" class="content-section secondary-bg">
+            <div class="container">
+                <h2 id="dibattito-title">Il Dibattito: Eroe o Criminale?</h2>
+                <p class="section-intro" id="dibattito-intro">Questo è il nucleo della questione. Il caso divide il mondo in due visioni opposte.</p>
+                <div class="grid-layout">
+                    <div class="card" data-card-index="3">
+                        <h3><i class="fas fa-shield-alt"></i> La Difesa: "Condannano l'Occidente Libero"</h3>
+                        <p>I sostenitori di Assange (incluse organizzazioni come Amnesty International e testate come il NY Times) sostengono che sia un editore. Affermano che pubblicare informazioni veritiere di interesse pubblico è un pilastro del giornalismo protetto dalla Costituzione.</p>
+                    </div>
+                    <div class="card" data-card-index="4">
+                        <h3><i class="fas fa-gavel"></i> L'Accusa: "Minaccia alla Sicurezza"</h3>
+                        <p>L'accusa USA sostiene che Assange abbia "cospirato" attivamente con Chelsea Manning per ottenere illegalmente i documenti, andando oltre il ruolo passivo di un giornalista, e mettendo in pericolo vite umane pubblicando nomi di informatori.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="espionage-act" class="content-section">
+            <div class="container">
+                <h2 id="espionage-title">Il Nodo: l'Espionage Act del 1917</h2>
+                <p id="espionage-text">La quasi totalità delle accuse si basa sull'**Espionage Act**, una legge sulla Prima Guerra Mondiale creata per perseguire le spie. La legge non fa distinzione tra una spia che vende segreti a un nemico e un giornalista che li pubblica nell'interesse pubblico.</p>
+                <blockquote id="espionage-quote">
+                    "L'incriminazione di Julian Assange ai sensi dell'Espionage Act è un attacco diretto al Primo Emendamento e alla libertà di stampa."
+                    <footer>- ACLU (American Civil Liberties Union)</footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="libero" class="content-section secondary-bg">
+            <div class="container">
+                <h2 id="libero-title">"Libero, ma Colpevole di Giornalismo"</h2>
+                <p id="libero-text-1">Nel **giugno 2024**, Assange ha raggiunto un patteggiamento. Si è dichiarato colpevole di un singolo capo d'accusa: "cospirazione per ottenere e diffondere informazioni relative alla difesa nazionale".</p>
+                <p id="libero-text-2">Dopo l'udienza a Saipan (vicino all'Australia), è stato condannato ai 62 mesi già trascorsi nel carcere di Belmarsh e dichiarato un uomo libero. La sua libertà è arrivata al prezzo di una dichiarazione di colpevolezza per un atto che molti definiscono "giornalismo".</p>
+                <div style="text-align: center; margin-top: 40px;">
+                    <button id="open-quotes-btn" class="cta-button">Il nostro pensiero</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <p>Sito web dimostrativo creato da Leonardo, Marco, jacopo e astrit. Tutti i contenuti sono a scopo illustrativo.</p>
+    </footer>
+
+    <!-- React Modal Root -->
+    <div id="modal-react-root"></div>
+
+    <!-- Existing JavaScript -->
+    <script src="script.js" defer></script>
+    
+    <!-- React Animations Integration -->
+    <script src="react-integration.js"></script>
+</body>
+</html>

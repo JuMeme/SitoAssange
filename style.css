@@ -323,7 +323,7 @@ blockquote footer {
     bottom: 0; 
     left: 50%; 
     margin-left: -2px;
-    z-index: 1;
+    z-index: 0;
 }
 .timeline-item { 
     padding: 10px 40px; 
@@ -331,6 +331,7 @@ blockquote footer {
     width: 50%; 
     margin-bottom: 20px;
     min-height: 100px;
+    z-index: 2;
 }
 .timeline-dot {
     position: absolute; 
@@ -361,13 +362,13 @@ blockquote footer {
     padding-right: 0;
 }
 .timeline-item:nth-child(odd) .timeline-dot { 
-    right: -10px; 
+    right: 0; 
     left: auto;
     top: 50%;
     transform: translate(50%, -50%);
 }
 .timeline-item:nth-child(even) .timeline-dot { 
-    left: -10px; 
+    left: 0; 
     right: auto;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -671,4 +672,18 @@ blockquote footer {
     z-index: 9999;
     transition: width 0.1s ease-out;
     box-shadow: 0 2px 4px rgba(0, 86, 179, 0.3);
+}
+
+/* --- Footer --- */
+#footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--secondary-bg-color);
+    border-top: 1px solid var(--border-color);
+    margin-top: 60px;
+}
+#footer p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 0.95rem;
 }

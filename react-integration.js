@@ -597,5 +597,3 @@
     // Start initialization
     initReactAnimations();
 })();
-
-
